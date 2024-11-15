@@ -17,7 +17,6 @@
 
 function enfile_css_js()
 {
-    return "Hello le monde";
     $version_css = filemtime(plugin_dir_path(__FILE__) . "/style.css");
     $version_js =  filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
     wp_enqueue_style(
