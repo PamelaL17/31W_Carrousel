@@ -1,14 +1,16 @@
 .carrousel {
-  position: absolute;
-  transform: scale(0);
-  transition: transform 0.5s;
-  top: 25%;
-  left: 25%;
-  height: 50vh;
-  width: 50vw;
-  border: 3px solid #000;
-  background-color: #e1eb2d;
-  z-index: 9;
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-in-out;
+    max-width: 80vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    border: 3px solid #000;
+    background-color: #e1eb2d;
+    z-index: 1000;
 }
 
 .carrousel__x {
@@ -21,7 +23,7 @@
 }
 
 .carrousel--ouvrir {
-  transform: scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .carrousel__gauche,

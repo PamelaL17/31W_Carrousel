@@ -43,7 +43,7 @@ function genere_carrousel()
                     <button class="carrousel__droite">droite</button>
                     <figure class="carrousel__figure"></figure>
                 </div>';
-    return $chaine;
+    return $chaine; // TODO: ajouter radio bouton dans form
 }
 
 add_shortcode("carrousel", "genere_carrousel");
