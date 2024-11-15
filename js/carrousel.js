@@ -1,5 +1,4 @@
 (function () {
-
   let carrousel__bouton = document.querySelector(".carrousel__bouton");
   let carrousel__x = document.querySelector(".carrousel__x");
   let carrousel = document.querySelector(".carrousel");
@@ -10,9 +9,11 @@
   let carrousel__gauche = document.querySelector(".carrousel__gauche");
   let carrousel__droite = document.querySelector(".carrousel__droite");
   let carrousel__form = document.querySelector(".carrousel__form");
-  
+
+  let index = 0; // Suivi de l'index de l'image courante
+
   console.log(galerie__img.length);
-  
+
   carrousel__droite.addEventListener("click", function () {
     index = (index + 1) % galerie__img.length; // passe a l'image suivante et boucle au debut si on depasse la derniere image
     afficheImage(index);
@@ -25,7 +26,6 @@
 
   function remplirCarrousel() {
     for (elm of galerie__img) {
-      console.log(elm.src);
       let img = document.createElement("img");
       img.src = elm.src; // copie une image de la galerie vers le carrousel
       img.classList.add("carrousel__img");
@@ -37,7 +37,7 @@
   /**
    * Creation d'un radio
    * Cree un element input et ajouter les attribut type, class, value
-   * @param { 
+   * @param {
    * i numero de radio }
    */
   function creationRadio(i) {
@@ -55,15 +55,20 @@
     carrousel__form.appendChild(radio);
   }
 
-  carrousel__bouton.addEventListener("click", function () {
+  // Listener pour ouvrir le carrousel depuis une image de la galerie
+  galerie__img.forEach((img, i) => {
+    img.addEventListener("click", function () {
 
-    if (carrousel__figure.innerHTML === "") {
-      remplirCarrousel();
-    }
-    afficheImage(4);
+      if (carrousel__figure.innerHTML === "") {
+        remplirCarrousel(); // Remplit le carrousel
+      }
 
-    carrousel.classList.add("carrousel--ouvrir");
-    console.log("Ouvrir");
+      index = i; // Définit l'index sur l'image cliquée
+      afficheImage(index);
+      carrousel.classList.add("carrousel--ouvrir");
+
+      console.log("Carrousel ouvert a l'image :", index);
+    });
   });
 
   carrousel__x.addEventListener("click", function () {
@@ -83,5 +88,4 @@
     carrousel__img[index].classList.add("carrousel__img--visible");
     carrousel__radio[index].checked = true; // selectionne le bouton radio correspondant
   }
-
 })();
