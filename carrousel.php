@@ -15,8 +15,33 @@
  */
 
 
-function ajoute_texte()
+function enfile_css_js()
 {
     return "Hello le monde";
+    $version_css = filemtime(plugin_dir_path(__FILE__) . "/style.css");
+    $version_js =  filemtime(plugin_dir_path(__FILE__) . "js/carrousel.js");
+    wp_enqueue_style(
+        "carrousel",
+        plugin_dir_url(__FILE__) . "/style.css",
+        array(),
+        $version_css
+    );
+    wp_enqueue_script(
+        "carrousel",
+        plugin_dir_url(__FILE__) . "js/carrousel.js",
+        array(),
+        $version_js,
+        true
+    );
 }
-add_shortcode("mon_texte", "ajoute_texte");
+add_action("wp_enqueue_scripts", "enfile_css_js");
+function genere_carrousel()
+{
+    $chaine = "<button id='bouton__ouvrir' class='bouton__ouvrir'>Ouvrir</button>";
+    $chaine .= "<div id='carrousel' class='carrousel'>";
+    $chaine .= "<button id='carrousel__x' class='carrousel__x'>X</button>";
+    $chaine .= "</div>";
+    return $chaine;
+}
+
+add_shortcode("carrousel", "genere_carrousel");
