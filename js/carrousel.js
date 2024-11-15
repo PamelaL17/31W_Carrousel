@@ -25,13 +25,14 @@
   });
 
   function remplirCarrousel() {
-    for (elm of galerie__img) {
+    galerie__img.forEach((elm, i) => {
       let img = document.createElement("img");
-      img.src = elm.src; // copie une image de la galerie vers le carrousel
+      img.src = elm.src;
       img.classList.add("carrousel__img");
       carrousel__figure.appendChild(img);
-      creationRadio(i); // creer un bouton radio pour chaque image
-    }
+      
+      creationRadio(i);
+    });
   }
 
   /**
@@ -80,12 +81,9 @@
     let carrousel__img = document.querySelectorAll(".carrousel__img");
     let carrousel__radio = document.querySelectorAll(".carrousel__radio");
 
-    for (let i = 0; i < carrousel__img.length; i++) {
-      carrousel__img[i].classList.remove("carrousel__img--visible");
-      carrousel__radio[i].checked = false; // deselectionne tous les boutons radio
-    }
-
-    carrousel__img[index].classList.add("carrousel__img--visible");
-    carrousel__radio[index].checked = true; // selectionne le bouton radio correspondant
+    carrousel__img.forEach((img, i) => {
+      img.classList.toggle("carrousel__img--visible", i === index);
+      carrousel__radio[i].checked = i === index; // Sélectionne le bouton radio correspondant
+    });
   }
 })();
