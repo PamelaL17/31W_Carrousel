@@ -37,10 +37,12 @@ function enfile_css_js()
 add_action("wp_enqueue_scripts", "enfile_css_js");
 function genere_carrousel()
 {
-    $chaine = "<button id='bouton__ouvrir' class='bouton__ouvrir'>Ouvrir</button>";
-    $chaine .= "<div id='carrousel' class='carrousel'>";
-    $chaine .= "<button id='carrousel__x' class='carrousel__x'>X</button>";
-    $chaine .= "</div>";
+    $chaine = '<div class="carrousel">
+                    <button class="carrousel__x">X</button>
+                    <button class="carrousel__gauche">gauche</button>
+                    <button class="carrousel__droite">droite</button>
+                    <figure class="carrousel__figure"></figure>
+                </div>';
     return $chaine;
 }
 

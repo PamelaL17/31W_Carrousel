@@ -10,13 +10,51 @@
   background-color: #e1eb2d;
   z-index: 9;
 }
+
 .carrousel__x {
   position: absolute;
   top: 0;
   right: 0;
   font-size: 2em;
   cursor: pointer;
+  z-index: 9;
 }
+
 .carrousel--ouvrir {
   transform: scale(1);
+}
+
+.carrousel__gauche,
+.carrousel__droite {
+  position: absolute;
+  top: 50%;
+  z-index: 9;
+}
+
+.carrousel__gauche {
+  left: 0;
+}
+
+.carrousel__droite {
+  right: 0;
+}
+
+.carrousel__figure {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.carrousel__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.carrousel__img--visible {
+  opacity: 1;
 }
