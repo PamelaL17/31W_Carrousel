@@ -1,58 +1,83 @@
 .carrousel {
   position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s ease-in-out;
-    max-width: 80vw;
-    max-height: 80vh;
-    width: auto;
-    height: auto;
-    border: 3px solid #000;
-    background-color: #e1eb2d;
-    z-index: 1000;
-    border: 3px solid red; /* Pour déboguer l'affichage */
-}
-
-.carrousel__x {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 2em;
-  cursor: pointer;
-  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 80vw;
+  height: 80vh;
+  border: 3px solid #000;
+  background-color: #e1eb2d;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carrousel--ouvrir {
   transform: translate(-50%, -50%) scale(1);
 }
 
-.carrousel__gauche,
-.carrousel__droite {
-  position: absolute;
-  top: 50%;
-  z-index: 9;
-}
-
-.carrousel__gauche {
-  left: 0;
-}
-
-.carrousel__droite {
-  right: 0;
-}
-
 .carrousel__figure {
-  position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .carrousel__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  position: absolute;
 }
 
 .carrousel__img--visible {
   opacity: 1;
+}
+
+.carrousel__gauche,
+.carrousel__droite {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 9;
+}
+
+.carrousel__gauche {
+  left: -2rem;
+}
+
+.carrousel__droite {
+  right: -2rem;
+}
+
+.carrousel__x {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  font-size: 2rem;
+  background: red;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 9;
+}
+
+.carrousel__radio {
+  display: none; /* Pour rendre les boutons radio invisible */
 }

@@ -1,10 +1,7 @@
 (function () {
-  let carrousel__bouton = document.querySelector(".carrousel__bouton");
   let carrousel__x = document.querySelector(".carrousel__x");
   let carrousel = document.querySelector(".carrousel");
-  let carrousel__image = document.querySelector(".carrousel__image");
   let carrousel__figure = document.querySelector(".carrousel__figure");
-  let galerie = document.querySelector(".galerie");
   let galerie__img = document.querySelectorAll(".galerie img");
   let carrousel__gauche = document.querySelector(".carrousel__gauche");
   let carrousel__droite = document.querySelector(".carrousel__droite");
@@ -30,7 +27,7 @@
       img.src = elm.src;
       img.classList.add("carrousel__img");
       carrousel__figure.appendChild(img);
-      
+
       creationRadio(i);
     });
   }
