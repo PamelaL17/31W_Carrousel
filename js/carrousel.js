@@ -9,6 +9,7 @@
   let galerie__img = document.querySelectorAll(".galerie img");
   let carrousel__gauche = document.querySelector(".carrousel__gauche");
   let carrousel__droite = document.querySelector(".carrousel__droite");
+  let carrousel__form = document.querySelector(".carrousel__form");
   
   console.log(galerie__img.length);
   
@@ -29,6 +30,7 @@
       img.src = elm.src; // copie une image de la galerie vers le carrousel
       img.classList.add("carrousel__img");
       carrousel__figure.appendChild(img);
+      creationRadio(i); // creer un bouton radio pour chaque image
     }
   }
 
@@ -39,7 +41,18 @@
    * i numero de radio }
    */
   function creationRadio(i) {
-    
+    let radio = document.createElement("input");
+
+    radio.type = "radio";
+    radio.name = "carrousel__radio";
+    radio.value = i; // chaque radio a un numero d'index correspondant a l'image
+    radio.classList.add("carrousel__radio");
+
+    radio.addEventListener("click", function () {
+      afficheImage(i); // affichera l'image lorsqu'on clique
+    });
+
+    carrousel__form.appendChild(radio);
   }
 
   carrousel__bouton.addEventListener("click", function () {
@@ -59,13 +72,16 @@
   });
 
   function afficheImage(index) {
-
     let carrousel__img = document.querySelectorAll(".carrousel__img");
+    let carrousel__radio = document.querySelectorAll(".carrousel__radio");
 
     for (let i = 0; i < carrousel__img.length; i++) {
       carrousel__img[i].classList.remove("carrousel__img--visible");
+      carrousel__radio[i].checked = false; // deselectionne tous les boutons radio
     }
+
     carrousel__img[index].classList.add("carrousel__img--visible");
+    carrousel__radio[index].checked = true; // selectionne le bouton radio correspondant
   }
 
 })();
